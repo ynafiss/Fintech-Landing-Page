@@ -10,16 +10,20 @@
                     <h2>The Process</h2>
                     <p>Strategic phrases we run through with every client make it possible to implement highly efficinet processes, even in high pace startups that like to scale as fast as possible.</p>
                 </div>
-                <div>
-                    <div class="boxes">
-                        <img src="../assets/uil_chart-growth.png" style="width: 70px;height: 70px;" alt="Frame 2" />
-                        <a style="width: 99px; height: 29px; font-weight: 500; font-size: 22px; line-height: 150%;" >Analysis</a>
+                <div class="container">
+                    <div
+                        v-for="(box, index) in processSteps"
+                        :key="index"
+                        class="boxes"
+                    >
+                        <img :src="box.icon" :alt="box.title" style="width: 70px; height: 70px;" />
+                        <a style="width: 100%; height: 29px; font-weight: 500; font-size: 22px; line-height: 150%; text-align: center; margin-top: 40px;">
+                            {{ box.title }}
+                        </a>
                         <div class="number-container">
-                            <h1 class="step-number">1</h1>
-                        </div>>
+                            <h1 class="step-number">{{ box.step }}</h1>
+                        </div>
                     </div>
-                    <div></div>
-                    <div></div>
                 </div>
             </div>
         </div>
@@ -27,14 +31,35 @@
 
 </template>
 
-<script setup></script> 
+
+<script setup lang="ts">
+import chartGrowthIcon from "../assets/uil_chart-growth.png";
+import arrowGrowthIcon from "../assets/uil_arrow-growth.png";
+import moneyIcon from "../assets/fluent_money-20-regular.png";
+
+const processSteps: ProcessStep[] = [
+    { title: "Analysis", icon: chartGrowthIcon, step: 1 },
+    { title: "Growth Phase", icon: arrowGrowthIcon, step: 2 },
+    { title: "Profit", icon: moneyIcon, step: 3 },
+];
+type ProcessStep = {
+    title: string;
+    icon: string;
+    step: number;
+}
+
+</script>
 
 <style scoped>
 .frame{
-    background: #121139;
+    background-image: url("../assets/bg1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #121139;
     color: white;
     width: 100vw;
-    height: 100vh;
+    height: 110vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,7 +67,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    overflow: hidden;
 }
+
+
 .frame-title{
     display: flex;
     flex-direction: column;
@@ -56,6 +84,7 @@
     justify-content: space-around;
     align-items: center;
     width: 90%;
+    margin-bottom: 80px;
 }
 
 .frame-text{
@@ -63,13 +92,21 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: space-between;
-    width: 823px;
+    width: 723px;
+    height: 100%;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     height: 100%;
 }
 
 .boxes{
-    width: 202px;
-    height: 172px;
+    width: 225px;
+    height: 192px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,16 +116,25 @@
     background-clip: padding-box;
     padding: 4px;
     box-sizing: border-box;
-    background: linear-gradient(#121139, #121139) padding-box,
+    background: linear-gradient(#1C1A50, #1C1A50) padding-box,
                 linear-gradient(90deg, #812DE2, #3A49F9) border-box;
-    border: 4px solid transparent;
+    border: 2px solid transparent;
+    border-radius: 40px;
     overflow: visible;
+}
+
+h2{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: -4px;
+    margin-bottom: 20px;
 }
 
 .number-container {
     position: absolute;
-    /* right: -20px; */
-    bottom: -70px;
+    text-align: center;
+    bottom: -85px;
     height: 117px;
 }
 
@@ -99,9 +145,10 @@
     background-clip: text;
     height: 117px;
     width: auto;
-    font-size: 100px;
-    font-weight: 700;
-    line-height: 1;
+    font-size: 90px;
+    font-weight: 500;
+    line-height: 130%;
+    letter-spacing: 4%;
     text-align: center;
 }
 
@@ -117,18 +164,252 @@ h1 {
     text-align: center;
 }   
 p{
-    font-weight: 400;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 22px;
     line-height: 130%;
     letter-spacing: 4%;
+    line-height: 130%;
     margin-top: 20px;
-    width: 510px;
+
 }
 
 .chart-box{
-    /* border: #812DE2 2px solid; */
     border-radius: 10px;
     box-shadow: 0 0 305px #812DE2, 0 0 25px rgba(129, 45, 226, 0.5);
+}
+
+@media (max-width: 1440px) {
+  .frame {
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .chart-box {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  .frame-text {
+    width: 100%;
+    max-width: 723px;
+  }
+  
+  h1 {
+    width: 100%;
+    max-width: 724px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .frame-content {
+    width: 95%;
+  }
+  
+  .container {
+    gap: 20px;
+  }
+  
+  .boxes {
+    width: 200px;
+    height: 180px;
+  }
+  
+  .number-container {
+    bottom: -70px;
+  }
+  
+  .step-number {
+    font-size: 80px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .frame {
+    padding: 60px 20px;
+  }
+  
+  .frame-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 40px;
+  }
+
+  .frame-text {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .chart-box {
+    max-width: 80%;
+    box-shadow: 0 0 150px #812DE2, 0 0 15px rgba(129, 45, 226, 0.5);
+  }
+
+  h1 {
+    font-size: 40px;
+    width: 100%;
+  }
+  
+  h2 {
+    font-size: 28px;
+    letter-spacing: -2px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .container {
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .boxes {
+    width: 200px;
+    height: 180px;
+    margin-bottom: 90px;
+    transition: all 0.3s ease;
+  }
+
+  .step-number {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .frame {
+    padding: 50px 15px;
+  }
+  
+  .chart-box {
+    max-width: 90%;
+    box-shadow: 0 0 100px #812DE2, 0 0 10px rgba(129, 45, 226, 0.5);
+  }
+  
+  h1 {
+    font-size: 32px;
+    letter-spacing: -1px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    letter-spacing: -1px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .boxes {
+    width: 180px;
+    height: 160px;
+    border-radius: 30px;
+    margin-bottom: 80px;
+  }
+
+  .step-number {
+    font-size: 60px;
+    height: 90px;
+  }
+  
+  .number-container {
+    bottom: -60px;
+  }
+  
+  img.box-icon {
+    width: 60px !important;
+    height: 60px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .frame {
+    margin-top: 40px;
+  }
+  
+  .container {
+    flex-direction: column;
+    gap: 90px;
+  }
+  
+  .boxes {
+    width: 220px;
+    height: 180px;
+    margin-bottom: 0;
+  }
+  
+  .number-container {
+    bottom: -50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .frame {
+    padding: 40px 10px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    letter-spacing: -0.5px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    letter-spacing: normal;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .boxes {
+    width: 200px;
+    height: 160px;
+    border-radius: 25px;
+    border-width: 1px;
+  }
+
+  .step-number {
+    font-size: 50px;
+    height: 70px;
+  }
+  
+  img.box-icon {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .chart-box {
+    box-shadow: 0 0 70px #812DE2, 0 0 7px rgba(129, 45, 226, 0.5);
+  }
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  p {
+    font-size: 13px;
+  }
+  
+  .boxes {
+    width: 180px;
+    height: 150px;
+  }
+  
+  img.box-icon {
+    width: 45px !important;
+    height: 45px !important;
+  }
 }
 
 </style>
