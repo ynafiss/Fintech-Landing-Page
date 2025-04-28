@@ -66,8 +66,7 @@ const bottomSectionImages = [
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    padding: 20px;
-
+    padding-top: 20px;
 }
 .hero-content{
     display: flex;
@@ -93,8 +92,15 @@ h1{
     font-size: 99px;
     letter-spacing: -4px;
     line-height: 1.1;
-    transform: scaleY(1.05);
-    transform-origin: center
+    text-align: left;
+    margin-left: -5px;
+}
+
+h1.colored {
+  background: linear-gradient(90deg,#4646F9, #9130F4);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 p{
     font-weight: 500;
@@ -103,14 +109,6 @@ p{
     letter-spacing: 4%;
     margin-top: 20px;
     margin-bottom: 10px;
-}
-
-h1.colored {
-    background: linear-gradient(90deg, #3A49F9 , #812DE2);
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    display: inline-block;
 }
 
 button{
@@ -126,7 +124,7 @@ button{
     background-clip: padding-box;
     padding: 4px;
     box-sizing: border-box;
-    background: linear-gradient(#121139, #121139) padding-box,
+    background: linear-gradient(#1c1a52, #1c1a52) padding-box,
                 linear-gradient(90deg, #812DE2, #3A49F9) border-box;
     border: 4px solid transparent;
 }
@@ -138,10 +136,6 @@ button{
     margin-bottom: 80px;
 }
 
-.bottom-section-img{
-    width: 236px;
-    height: 51px;
-}
 
 @media (max-width: 1440px) {
   .hero {

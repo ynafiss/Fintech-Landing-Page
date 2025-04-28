@@ -123,7 +123,7 @@ a{
 }
 
 h1{
-    background: linear-gradient(90deg, #812DE2, #3A49F9);
+    background: linear-gradient(90deg, #4646F9, #9130F4);
     color: transparent;
     -webkit-background-clip: text;
     background-clip: text;

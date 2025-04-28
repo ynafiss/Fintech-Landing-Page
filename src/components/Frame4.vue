@@ -58,7 +58,7 @@
 }
 
 h1 {
-  background: linear-gradient(90deg, #812DE2, #3A49F9);
+  background: linear-gradient(90deg, #9030F4, #4945F8);
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
